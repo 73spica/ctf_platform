@@ -34,7 +34,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">m1z0r3 CTF</a>
+          <a class="navbar-brand" href="/">m1z0r3 CTF</a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -46,7 +46,12 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if session.logged_in %}
-            <li><a href="logout">Logout</a></li>
+            <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{session.username}}<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="logout">Logout</a></li>
+              </ul>
+            </li>
             {% else %}
             <li><a href="login">Login/Register</a></li>
             {% endif%}
