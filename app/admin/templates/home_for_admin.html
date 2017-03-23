@@ -1,0 +1,15 @@
+{% extends "layout_for_admin.html" %}
+{% block content %}
+<div class="container">
+  <div class="jumbotron">
+    <h1>m1z0r3 CTF Platform for admin</h1>
+    <p>admin用ページです．問題の追加ができます．</a>
+    {%if session.logged_in%}
+        <p>{{session.username}}でログインしています．</p>
+    {%endif%}
+  </div>
+  <div class="page-header">
+    <h1>m1z0r3 CTF</h1>
+  </div>
+</div>
+{% endblock %}
