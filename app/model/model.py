@@ -17,6 +17,7 @@ class Problems(Model):
     name = CharField()
     point = IntegerField()
     genre = CharField()
+    flag = CharField()
     author = CharField()
 
     class Meta:
