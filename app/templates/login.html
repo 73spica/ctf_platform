@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+  {%if success%}
+  <div class="alert alert-success" role="alert">
+    <strong>Well done!</strong> You registration successfull. Please login.
+  </div>
+  {% endif %}
+  {%if error%}
+  <div class="alert alert-danger" role="alert">
+      <strong>{{error}}</strong> You registration failed. Please again.
+  </div>
+  {% endif %}
+  <form class="form-signin" action="" method="POST">
+    <div class="page-header">
+      <h2 class="form-signin-heading">Login</h2>
+    </div>
+    <label for="inputEmail" class="sr-only">Username</label>
+    <input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <div class="checkbox">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+  </form>
+  <form class="form-signin" action="register" method="POST">
+    <div class="page-header">
+      <h2 class="form-signin-heading">Register</h2>
+    </div>
+    <label for="inputEmail" class="sr-only">Username</label>
+    <input type="text" name="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <label for="re-inputPassword" class="sr-only">Confirm Password</label>
+    <input type="password" name="re-password" id="re-inputPassword" class="form-control" placeholder="Confirm Password" required>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
+  </form>
+{% endblock %}
