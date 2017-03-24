@@ -1,2 +1,4 @@
 /__pycache__/
 *.pyc
+/m1z0r3ctf.db
+/for_admin.db
