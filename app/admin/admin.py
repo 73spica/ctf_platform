@@ -32,6 +32,9 @@ def login():
         return render_template('login_for_admin.html')
 
 @app.route('/logout',methods=['GET'])
+def logout():
+    doLogout()
+    return redirect(url_for('admin.login'))
 
 @app.route("/problem")
 def problem():
@@ -77,3 +80,6 @@ def doRegister(username,password):
         db.rollback()
         return False
 
+def doLogout():
+    session.pop('logged_in', None)
+    session.pop('is_admin', None)
