@@ -5,7 +5,7 @@ from peewee import *
 from datetime import date
 import json
 import hashlib
-from model.model import Users, db
+from .model.model import Users, db
 
 app = Blueprint('admin',__name__, url_prefix="/admin",template_folder='../admin/templates')
 
@@ -19,10 +19,11 @@ def login():
     error = None
     if request.method=='POST':
         #if valid_login(request.form['username'],request.form['password']):
-        success,msg = doLogin(request.form['username'],request.form['password'])
-        if success:
-            session['username'] = request.form['username']
+        user,msg = doLogin(request.form['username'],request.form['password'])
+        if user:
+            session['username'] = user.username
             session['logged_in'] = True
+            session['is_admin'] = user.is_admin
             return redirect(url_for('admin.home'))
         else:
             error = msg
@@ -50,7 +51,7 @@ def doLogin(username,password):
     else:
         if user:
             message = "Login Success!"
-            return (True,message)
+            return (user,message)
         else:
             message = "username/password is wrong."
             return (False,message)
