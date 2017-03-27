@@ -58,7 +58,6 @@ def doLogin(username,password):
 
 @app.route('/register',methods=['POST'])
 def register():
-    print(request.form['password'])
     if request.method == 'POST':
         if doRegister(request.form['username'],request.form['password']):
             return render_template('login_for_admin.html',success=True)
