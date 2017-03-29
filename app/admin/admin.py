@@ -80,6 +80,7 @@ def doRegister(username,password):
         db.rollback()
         return False
 
+# TODO: セッションに入れるキーはどこかにまとめておくべき？
 def doLogout():
     session.pop('logged_in', None)
     session.pop('is_admin', None)

@@ -89,6 +89,7 @@ def doLogin(username,password):
 
 def doLogout():
     session.pop('logged_in', None)
+    session.pop('is_admin', None)
 
 def doRegister(username,password):
     try:

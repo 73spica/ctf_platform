@@ -5,7 +5,11 @@
     <h1>m1z0r3 CTF Platform</h1>
     <p>m1z0r3のチーム内CTFとか常設CTFで使うCTFプラットフォーム．問題や問題ファイル，フラグを簡単に登録してCTFで使えるようにする．</p>
     {%if session.logged_in%}
-        <p>{{session.username}}でログインしています．</p>
+        {%if session.is_admin%}
+            <p>{{session.username}}(admin)でログインしています．</p>
+        {%else%}
+            <p>{{session.username}}でログインしています．</p>
+        {%endif%}
     {%endif%}
   </div>
   <div class="page-header">
