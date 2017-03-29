@@ -40,6 +40,9 @@ def logout():
 def problem():
     return render_template("problem_for_admin.html")
 
+@app.route("/adding_problems")
+def adding_problems():
+    return render_template("adding_problems.html")
 
 def doLogin(username,password):
     try:
