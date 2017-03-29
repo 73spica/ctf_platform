@@ -1,0 +1,48 @@
+{% extends "layout_for_admin.html" %}
+{% block content %}
+<div class="container">
+  <div>
+    <div class="page-header">
+      <h1>問題追加</h1>
+    </div>
+    <div class="form-horizontal">
+      <div class="form-group">
+        <label for="inputTitle" class="col-md-2 control-label">Title</label>
+        <div class="col-md-10">
+          <input type="text" class="form-control" id="inputTitle" style="width:300px" placeholder="Title" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputPoint" class="col-md-2 control-label">Point</label>
+        <div class="col-md-10">
+          <input type="number" class="form-control" id="inputPoint" style="width:150px" placeholder="50 or 100 or 200" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputGenre" class="col-md-2 control-label">Genre</label>
+        <div class="col-md-10">
+          <select class="form-control" style="width:150px" id="inputGenre">
+            <option>Crypto</option>
+            <option>Forensic</option>
+            <option>Pwn</option>
+            <option>Reversing</option>
+            <option>Web</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputFlag" class="col-md-2 control-label">Flag</label>
+        <div class="col-md-10">
+            <input type="text" class="form-control" id="inputFlag" placeholder="m1z0r3{sample_flag_strings}" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="inputDetail" class="col-md-2 control-label">Detail</label>
+        <div class="col-md-10">
+            <textarea class="form-control" rows="10" id="inputDetail" placeholder="Detail......."></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
