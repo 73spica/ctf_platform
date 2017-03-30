@@ -16,6 +16,26 @@
       </tr>
     </thead>
     <tbody>
+      {% for problem in problems %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ problem['name'] }}</td>
+        <td>{{ problem['genre'] }}</td>
+        <td>{{ problem['point'] }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Problem</th>
+        <th>Genre</th>
+        <th>Score</th>
+      </tr>
+    </thead>
+    <tbody>
       <tr>
         <td>1</td>
         <td>RSA</td>

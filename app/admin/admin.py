@@ -38,7 +38,8 @@ def logout():
 
 @app.route("/problem")
 def problem():
-    return render_template("problem_for_admin.html")
+    problems = Problems.select()
+    return render_template("problem_for_admin.html", problems=problems)
 
 @app.route("/adding_problems",methods=['GET','POST'])
 def adding_problems():
