@@ -18,7 +18,8 @@ def home():
 
 @app.route('/problem')
 def problem():
-    return render_template('problem.html')
+    problems = Problems.select()
+    return render_template('problem.html', problems=problems)
 
 @app.route('/ranking')
 def ranking():
