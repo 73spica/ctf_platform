@@ -1,6 +1,6 @@
-// ログイン画面系
+/* ログイン画面系 */
 
-// 中央配置と幅．なぜかmarginを二回書かないと適応されない．
+/* 中央配置と幅．なぜかmarginを二回書かないと適応されない． */
 .form-signin {
   margin: 0 auto;
 }
@@ -30,7 +30,7 @@
   z-index: 2;
 }
 
-// 各formを少し四角くしてくっつける
+/* 各formを少し四角くしてくっつける */
 .form-signin input[type="text"] {
   margin-bottom: -1px;
   border-bottom-right-radius: 0;
@@ -47,5 +47,5 @@
   border-top-right-radius: 0;
 }
 
-// 問題追加画面系
+/* 問題追加画面系 */
 
