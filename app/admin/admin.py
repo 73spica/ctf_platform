@@ -40,9 +40,12 @@ def logout():
 def problem():
     return render_template("problem_for_admin.html")
 
-@app.route("/adding_problems")
+@app.route("/adding_problems",methods=['GET','POST'])
 def adding_problems():
-    return render_template("adding_problems.html")
+    if request.method=='POST':
+        return redirect(url_for("admin.home"))
+    else:
+        return render_template("adding_problems.html")
 
 def doLogin(username,password):
     try:
