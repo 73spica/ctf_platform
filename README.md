@@ -1,5 +1,6 @@
 # ctf_platform
 とりあえず作る
+_Creating now_
 
 # About
 
