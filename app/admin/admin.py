@@ -7,6 +7,10 @@ import json
 import hashlib
 from .model.model import Users, db_for_admin, Problems, db
 
+# TODO: 全ての処理について，adminであるかのチェック処理を実装
+# TODO: ログインしていない場合はhomeとloginページ以外すべてloginにリダイレクトさせる
+# デバッグしにくいのでとりあえず後回しで良い
+
 app = Blueprint('admin',__name__, url_prefix="/admin",template_folder='../admin/templates')
 
 @app.route("/")
@@ -71,6 +75,15 @@ def addProblem(title, point, genre, flag, detail, author):
         print (ex)
         db.rollback()
         return False
+
+# TODO: 問題の詳細画面が必要
+# これはユーザと共通のUIで良いが，編集ボタンや削除ボタンを持つ．
+
+# TODO: 問題の編集画面が必要．
+# adminのみの画面．一度登録した問題の編集が可能．
+
+# TODO: 問題の削除処理が必要
+# 問題IDとか作るか微妙だけど問題名がかぶることはまずないのでそれをユニークにしてしまってよい気がする．
 
 def doLogin(username,password):
     try:
