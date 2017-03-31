@@ -44,6 +44,11 @@ def problem():
 @app.route("/adding_problems",methods=['GET','POST'])
 def adding_problems():
     if request.method=='POST':
+        form_list = ['title','point','genre','flag','detail','author']
+        for key in form_list:
+            if request.form[key]:
+                message = "Please fill in all forms."
+                return render_template('adding_problems.html',error=message)
         success = addProblem(request.form['title'], request.form['point'], request.form['genre'], request.form['flag'], request.form['detail'], request.form['author'])
         if success:
             message = "Successfully added the problem."
