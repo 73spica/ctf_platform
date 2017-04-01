@@ -28,6 +28,8 @@ def problem():
 def problem_detail(p_id):
     problem = Problems.get(Problems.id == p_id)
     if request.method=='POST':
+        if not checkLogin():
+            return redirect(url_for('login'))
         correct = checkFlag(p_id,request.form['input_flag'])
         return render_template('problem_detail.html',problem=problem,correct=correct)
     else:
@@ -121,5 +123,13 @@ def checkFlag(p_id,input_flag):
     problem = Problems.get(Problems.id == p_id)
     correct_flag = problem.flag
     return input_flag == correct_flag
+
+def checkLogin():
+    if session.has_key("logged_in"):
+        if not session['logged_in']:
+            return False
+    else:
+        return False
+    return True
 
 app.secret_key = '\xdc{\xb6\xaa\xa4=j\xd6\xfe\xcf\x9f\x11\x87T%R\xd9\xc1\x0f\xce\x08\x93O\xbc'
