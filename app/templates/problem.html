@@ -18,9 +18,9 @@
       {% for problem in problems %}
       <tr>
         <td>{{ loop.index }}</td>
-        <td>{{ problem['name'] }}</td>
-        <td>{{ problem['genre'] }}</td>
-        <td>{{ problem['point'] }}</td>
+        <td><a href="http://localhost:5000/problem/{{problem.id}}">{{ problem.name }}</td>
+        <td>{{ problem.genre }}</td>
+        <td>{{ problem.point }}</td>
       </tr>
       {% endfor %}
     </tbody>
