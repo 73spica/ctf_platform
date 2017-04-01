@@ -50,7 +50,7 @@ def adding_problems():
     if request.method=='POST':
         form_list = ['title','point','genre','flag','detail','author']
         for key in form_list:
-            if request.form[key]:
+            if not request.form[key]:
                 message = "Please fill in all forms."
                 return render_template('adding_problems.html',error=message)
         success = addProblem(request.form['title'], request.form['point'], request.form['genre'], request.form['flag'], request.form['detail'], request.form['author'])
@@ -78,6 +78,7 @@ def addProblem(title, point, genre, flag, detail, author):
 
 # TODO: 問題の詳細画面が必要
 # これはユーザと共通のUIで良いが，編集ボタンや削除ボタンを持つ．
+# ユーザ用作ったのでそれのルーティングとhtmlをコピペする
 
 # TODO: 問題の編集画面が必要．
 # adminのみの画面．一度登録した問題の編集が可能．
