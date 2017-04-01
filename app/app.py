@@ -21,6 +21,18 @@ def problem():
     problems = Problems.select()
     return render_template('problem.html', problems=problems)
 
+# TODO: 問題の詳細画面が必要
+# これはユーザと共通のUIで良いが，編集ボタンや削除ボタンを持つ．
+
+@app.route('/problem/<int:p_id>',methods=['GET','POST'])
+def problem_detail(p_id):
+    problem = Problems.get(Problems.id == p_id)
+    if request.method=='POST':
+        correct = checkFlag(p_id,request.form['input_flag'])
+        return render_template('problem_detail.html',problem=problem,correct=correct)
+    else:
+        return render_template('problem_detail.html',problem=problem)
+
 @app.route('/ranking')
 def ranking():
     return render_template('ranking.html')
@@ -103,5 +115,11 @@ def doRegister(username,password):
         print (ex)
         db.rollback()
         return False
+
+def checkFlag(p_id,input_flag):
+    input_flag = hashlib.md5(input_flag.encode('utf-8')).hexdigest()
+    problem = Problems.get(Problems.id == p_id)
+    correct_flag = problem.flag
+    return input_flag == correct_flag
 
 app.secret_key = '\xdc{\xb6\xaa\xa4=j\xd6\xfe\xcf\x9f\x11\x87T%R\xd9\xc1\x0f\xce\x08\x93O\xbc'
