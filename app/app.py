@@ -21,9 +21,7 @@ def problem():
     problems = Problems.select()
     return render_template('problem.html', problems=problems)
 
-# TODO: 問題の詳細画面が必要
-# これはユーザと共通のUIで良いが，編集ボタンや削除ボタンを持つ．
-
+# 問題の詳細画面
 @app.route('/problem/<int:p_id>',methods=['GET','POST'])
 def problem_detail(p_id):
     problem = Problems.get(Problems.id == p_id)
