@@ -8,14 +8,14 @@
     <title>mzrctf</title>
 
     <!-- Bootstrap -->
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
     
     <!-- Theme -->
-    <link href="../static/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-theme.min.css" rel="stylesheet">
 
     <!-- self-made css -->
-    <link href="../static/css/common.css" rel="stylesheet">
-    <link href="../static/css/style.css" rel="stylesheet">
+    <link href="/static/css/common.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,19 +39,19 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <!-- <li class="active"><a href="home">Home</a></li> -->
-            <li><a href="home">Home</a></li>
-            <li><a href="problem">Problem</a></li>
+            <li><a href="/admin/home">Home</a></li>
+            <li><a href="/admin/problem">Problem</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if session.logged_in and session.is_admin%}
             <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{session.username}}<span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="logout">Logout</a></li>
+                <li><a href="/admin/logout">Logout</a></li>
               </ul>
             </li>
             {% else %}
-            <li><a href="login">Login/Register</a></li>
+            <li><a href="/admin/login">Login/Register</a></li>
             {% endif%}
           </ul>
         </div><!--/.nav-collapse -->
@@ -61,5 +61,5 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="/static/js/bootstrap.min.js"></script>
   </body>
