@@ -13,47 +13,19 @@
         <th>Problem</th>
         <th>Genre</th>
         <th>Score</th>
+        <th>Author</th>
       </tr>
     </thead>
     <tbody>
       {% for problem in problems %}
       <tr>
         <td>{{ loop.index }}</td>
-        <td>{{ problem['name'] }}</td>
-        <td>{{ problem['genre'] }}</td>
-        <td>{{ problem['point'] }}</td>
+        <td><a href="/admin/problem/{{problem.id}}">{{ problem.name }}</td>
+        <td>{{ problem.genre }}</td>
+        <td>{{ problem.point }}</td>
+        <td>{{ problem.author }}</td>
       </tr>
       {% endfor %}
-    </tbody>
-  </table>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Problem</th>
-        <th>Genre</th>
-        <th>Score</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>1</td>
-        <td>RSA</td>
-        <td>Crypto</td>
-        <td>50</td>
-      </tr>
-      <tr>
-        <td>2</td>
-        <td>Sqli</td>
-        <td>Web</td>
-        <td>100</td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td>BOF</td>
-        <td>Pwn</td>
-        <td>150</td>
-      </tr>
     </tbody>
   </table>
 </div>
