@@ -79,6 +79,16 @@ def addProblem(title, point, genre, flag, detail, author):
 # TODO: 問題の詳細画面が必要
 # これはユーザと共通のUIで良いが，編集ボタンや削除ボタンを持つ．
 # ユーザ用作ったのでそれのルーティングとhtmlをコピペする
+@app.route('/problem/<int:p_id>',methods=['GET','POST'])
+def problem_detail_for_admin(p_id):
+    problem = Problems.get(Problems.id == p_id)
+    if request.method=='POST':
+        if not checkLogin():
+            return redirect(url_for('login'))
+        correct = checkFlag(p_id,request.form['input_flag'])
+        return render_template('problem_detail_for_admin.html',problem=problem,correct=correct)
+    else:
+        return render_template('problem_detail_for_admin.html',problem=problem)
 
 # TODO: 問題の編集画面が必要．
 # adminのみの画面．一度登録した問題の編集が可能．
