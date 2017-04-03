@@ -113,8 +113,10 @@ def editting_problem(p_id):
             problem.detail = request.form['detail']
         if problem.author != request.form['author']:
             problem.author = request.form['author']
-        if not request.form['flag']:
-            problem.flag = request.form['flag']
+        if request.form['flag']:
+            flag = request.form['flag']
+            flag = hashlib.md5(flag.encode("utf-8")).hexdigest()
+            problem.flag = flag
         problem.save()
         success = True
         return render_template('editing_problem.html', problem=problem, success=success)
@@ -189,3 +191,9 @@ def checkAdminLogin():
         return False
 
     return True
+def checkFlag(p_id,input_flag):
+    input_flag = hashlib.md5(input_flag.encode('utf-8')).hexdigest()
+    problem = Problems.get(Problems.id == p_id)
+    correct_flag = problem.flag
+    print(correct_flag)
+    return input_flag == correct_flag
