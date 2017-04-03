@@ -97,6 +97,30 @@ def problem_detail_for_admin(p_id):
     else:
         return render_template('problem_detail_for_admin.html',problem=problem)
 
+@app.route('/problem/edit/<int:p_id>',methods=['GET','POST'])
+def editting_problem(p_id):
+    if not checkAdminLogin():
+        return redirect(url_for('admin.login'))
+    problem = Problems.get(Problems.id == p_id)
+    if request.method=='POST':
+        if problem.name != request.form['title']:
+            problem.name = request.form['title']
+        if problem.point != request.form['point']:
+            problem.point = request.form['point']
+        if problem.genre != request.form['genre']:
+            problem.genre = request.form['genre']
+        if problem.detail != request.form['detail']:
+            problem.detail = request.form['detail']
+        if problem.author != request.form['author']:
+            problem.author = request.form['author']
+        if not request.form['flag']:
+            problem.flag = request.form['flag']
+        problem.save()
+        success = True
+        return render_template('editing_problem.html', problem=problem, success=success)
+    else:
+        return render_template('editing_problem.html', problem=problem)
+
 # TODO: 問題の編集画面が必要．
 # adminのみの画面．一度登録した問題の編集が可能．
 
