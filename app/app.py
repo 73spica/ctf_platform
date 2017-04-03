@@ -123,7 +123,7 @@ def checkFlag(p_id,input_flag):
     return input_flag == correct_flag
 
 def checkLogin():
-    if session.has_key("logged_in"):
+    if "logged_in" in session:
         if not session['logged_in']:
             return False
     else:

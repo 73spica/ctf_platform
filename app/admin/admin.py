@@ -139,3 +139,11 @@ def doRegister(username,password):
 def doLogout():
     session.pop('logged_in', None)
     session.pop('is_admin', None)
+
+def checkLogin():
+    if "logged_in" in session:
+        if not session['logged_in']:
+            return False
+    else:
+        return False
+    return True
