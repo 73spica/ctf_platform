@@ -26,8 +26,9 @@
     </div>
     <button type="submit" class="btn btn-default">Send flag</button>
   </form>
-  <div class="text-center edit_del_block"><button type="submit" class="btn btn-primary">修正 &raquo;</button>
-    <button type="submit" class="btn btn-danger">削除 &raquo;</button>
+  <div class="text-center edit_del_block">
+      <a class="btn btn-primary" href="edit/{{problem.id}}" role="button">修正 &raquo;</a>
+    <a class="btn btn-danger" href="adding_problems" role="button">削除 &raquo;</a>
   </div>
 </div>
 {% endblock %}
