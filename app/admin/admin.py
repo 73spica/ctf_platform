@@ -16,13 +16,14 @@ app = Blueprint('admin',__name__, url_prefix="/admin",template_folder='../admin/
 @app.route("/")
 @app.route("/home")
 def home():
+    if not checkAdminLogin():
+        return redirect(url_for('admin.login'))
     return render_template("home_for_admin.html")
 
 @app.route('/login',methods=['GET','POST'])
 def login():
     error = None
     if request.method=='POST':
-        #if valid_login(request.form['username'],request.form['password']):
         user,msg = doLogin(request.form['username'],request.form['password'])
         if user:
             session['username'] = user.username
@@ -42,11 +43,15 @@ def logout():
 
 @app.route("/problem")
 def problem():
+    if not checkAdminLogin():
+        return redirect(url_for('admin.login'))
     problems = Problems.select()
     return render_template("problem_for_admin.html", problems=problems)
 
 @app.route("/adding_problems",methods=['GET','POST'])
 def adding_problems():
+    if not checkAdminLogin():
+        return redirect(url_for('admin.login'))
     if request.method=='POST':
         form_list = ['title','point','genre','flag','detail','author']
         for key in form_list:
@@ -81,10 +86,12 @@ def addProblem(title, point, genre, flag, detail, author):
 # ユーザ用作ったのでそれのルーティングとhtmlをコピペする
 @app.route('/problem/<int:p_id>',methods=['GET','POST'])
 def problem_detail_for_admin(p_id):
+    if not checkAdminLogin():
+        return redirect(url_for('admin.login'))
     problem = Problems.get(Problems.id == p_id)
     if request.method=='POST':
-        if not checkLogin():
-            return redirect(url_for('login'))
+        if not checkAdminLogin():
+            return redirect(url_for('admin.login'))
         correct = checkFlag(p_id,request.form['input_flag'])
         return render_template('problem_detail_for_admin.html',problem=problem,correct=correct)
     else:
@@ -116,7 +123,11 @@ def doLogin(username,password):
 
 @app.route('/register',methods=['POST'])
 def register():
+    if not checkAdminLogin():
+        return redirect(url_for('admin.login'))
     if request.method == 'POST':
+        # TODO: Registerページとログインページを分ける
+        # 現状だとloginページにいるのにアドレスがregisterになる
         if doRegister(request.form['username'],request.form['password']):
             return render_template('login_for_admin.html',success=True)
         else:
@@ -140,10 +151,17 @@ def doLogout():
     session.pop('logged_in', None)
     session.pop('is_admin', None)
 
-def checkLogin():
+def checkAdminLogin():
     if "logged_in" in session:
         if not session['logged_in']:
             return False
     else:
         return False
+
+    if "is_admin" in session:
+        if not session['is_admin']:
+            return False
+    else:
+        return False
+
     return True
