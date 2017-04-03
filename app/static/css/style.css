@@ -49,3 +49,7 @@
 
 /* 問題追加画面系 */
 
+/* admin用問題詳細画面系 */
+.edit_del_block {
+    margin: 30px;
+}
